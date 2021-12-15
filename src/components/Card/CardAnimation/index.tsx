@@ -21,32 +21,18 @@ export function CardAnimation({ children, ...rest }: CardAnimationProps) {
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
-      opacity: interpolate(
-        cardOpacity.value,
-        [0, 100],
-        [0, 1]
-      ),
+      opacity: cardOpacity.value,
       transform: [
         {
-          translateX: interpolate(
-            cardOffset.value,
-            [0, 100],
-            [2000, 0]
-          )
+          translateX: cardOffset.value
         }
       ]
     }
   })
 
   useEffect(() => {
-    cardOffset.value = withTiming(
-      100,
-      { duration: 1000 }
-    )
-    cardOpacity.value = withTiming(
-      100,
-      { duration: 1000 }
-    )
+    cardOffset.value = withTiming(0, { duration: 1000 })
+    cardOpacity.value = withTiming(1, { duration: 1000 })
   }, []);
 
   return (
