@@ -1,8 +1,12 @@
+import { Roboto_100Thin } from '@expo-google-fonts/roboto';
 import React, { useEffect } from 'react';
 import { useWindowDimensions, ViewProps } from 'react-native';
 import {
+  Extrapolate,
+  interpolate,
   useAnimatedStyle,
   useSharedValue,
+  withSpring,
   withTiming
 } from 'react-native-reanimated';
 
@@ -19,15 +23,32 @@ export function CardAnimation({ children, ...rest }: CardAnimationProps) {
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
-      // TODO - setup animated style
+      opacity: interpolate(
+        cardOpacity.value,
+        [0, 100],
+        [0, 1]
+      ),
+      transform: [
+        {
+          translateX: interpolate(
+            cardOffset.value,
+            [0, 100],
+            [cardOffset.value, 0]
+          )
+        }
+      ]
     }
   })
 
   useEffect(() => {
-    /**
-     * TODO - setup cardOpacity.value and cardOffset.value with
-     * withTiming()
-     */
+    cardOffset.value = withTiming(
+      100,
+      { duration: 1000 }
+    )
+    cardOpacity.value = withTiming(
+      100,
+      { duration: 1000 }
+    )
   }, []);
 
   return (
