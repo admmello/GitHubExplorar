@@ -2,11 +2,9 @@ import { Roboto_100Thin } from '@expo-google-fonts/roboto';
 import React, { useEffect } from 'react';
 import { useWindowDimensions, ViewProps } from 'react-native';
 import {
-  Extrapolate,
   interpolate,
   useAnimatedStyle,
   useSharedValue,
-  withSpring,
   withTiming
 } from 'react-native-reanimated';
 
@@ -33,7 +31,7 @@ export function CardAnimation({ children, ...rest }: CardAnimationProps) {
           translateX: interpolate(
             cardOffset.value,
             [0, 100],
-            [cardOffset.value, 0]
+            [2000, 0]
           )
         }
       ]

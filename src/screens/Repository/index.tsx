@@ -101,7 +101,7 @@ export function Repository() {
                 subTitle: issue.user.login,
               }}
               // TODO - onPress prop calling 
-              onPress={() => handleIssueNavigation(repository.issues_url)}
+              onPress={() => handleIssueNavigation(issue.html_url)}
             />
           )}
         />
