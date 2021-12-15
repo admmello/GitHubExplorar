@@ -83,7 +83,7 @@ export function Repository() {
           <OpenIssues>
             <OpenIssuesCounter>{
               // TODO - repository issues count
-              repository.issues.length
+              repository.open_issues_count
             }</OpenIssuesCounter>
             <OpenIssuesText>Issues{'\n'}Abertas</OpenIssuesText>
           </OpenIssues>
